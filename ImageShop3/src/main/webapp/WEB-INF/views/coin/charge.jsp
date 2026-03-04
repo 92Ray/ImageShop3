@@ -20,12 +20,12 @@
 
 	<!-- 메인 -->
 	<div class="notice_register">
-
 		<h2>
 			<spring:message code="coin.header.chargeCoin" />
 		</h2>
 
-		<form:form modelAttribute="chargeCoin" action="/coin/charge" mehotd= "post">
+		<form:form modelAttribute="chargeCoin" action="/coin/charge"
+			method="post">
 			<table>
 				<tr>
 					<td><spring:message code="coin.amount" /></td>
@@ -35,32 +35,35 @@
 			</table>
 		</form:form>
 
-		<div>
+		<!-- 회원만 가능  코인충전 -->
 		<sec:authorize access="hasRole('ROLE_MEMBER')">
-			<button type="submit" id="btnCharge">
-				<spring:message code="action.charge" />
-			</button>
+			<div>
+				<button type="submit" id="btnCharge">
+					<spring:message code="action.charge" />
+				</button>
+				<button type="submit" id="btnList">
+					<spring:message code="action.list" />
+				</button>
+			</div>
 		</sec:authorize>
-			<button type="submit" id="btnList">
-				<spring:message code="action.list" />
-			</button>
-		</div>
+
+	</div>
 
 
-		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-		<script>
-			$(document).ready(function() {
-				var formObj = $("#chargeCoin");
+	<script>
+		$(document).ready(function() {
+			var formObj = $("#chargeCoin");
 
-				$("#btnCharge").on("click", function() {
-					formObj.submit();
-				});
-
-				$("#btnList").on("click", function() {
-					self.location = "list";
-				});
+			$("#btnCharge").on("click", function() {
+				formObj.submit();
 			});
-		</script>
+
+			$("#btnList").on("click", function() {
+				self.location = "/coin/list";
+			});
+		});
+	</script>
 </body>
 </html>

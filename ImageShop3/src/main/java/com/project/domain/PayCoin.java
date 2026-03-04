@@ -3,10 +3,10 @@ package com.project.domain;
 import java.util.Date;
 
 import lombok.Data;
-// 지급내역 테이블
 
 @Data
 public class PayCoin {
+	//지급 내역 테이블
 	private int historyNo;
 	private int userNo;
 	private int itemId;

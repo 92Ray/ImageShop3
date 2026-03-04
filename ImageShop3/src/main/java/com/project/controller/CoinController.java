@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.commom.security.domain.CustomUser;
@@ -18,8 +21,8 @@ import com.project.service.CoinService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller
+@Slf4j
 @RequestMapping("/coin")
 public class CoinController {
 	@Autowired
@@ -42,7 +45,7 @@ public class CoinController {
 	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	public String charge(ChargeCoin chargeCoin, RedirectAttributes rttr, Authentication authentication)
 			throws Exception {
-		// 인증된 회원정보를 security로부터 객체를 가져옴.
+		// 인증된 회원 정보를 시큐리티로부터 객체를 가져옴
 		CustomUser customUser = (CustomUser) authentication.getPrincipal();
 		Member member = customUser.getMember();
 		int userNo = member.getUserNo();
@@ -53,16 +56,9 @@ public class CoinController {
 		if (count != 0) {
 			rttr.addFlashAttribute("msg", "충전이 완료되었습니다.");
 		} else {
-			rttr.addFlashAttribute("msg", "충전이 실패하였습니다.");
+			rttr.addFlashAttribute("msg", "충전을 실패하였습니다.");
 		}
-
 		return "redirect:/coin/success";
-	}
-
-	// 코인 충전 성공 페이지
-	@GetMapping("/success")
-	public String success() throws Exception {
-		return "coin/success";
 	}
 
 	// 충전 내역 페이지
@@ -72,9 +68,20 @@ public class CoinController {
 		CustomUser customUser = (CustomUser) authentication.getPrincipal();
 		Member member = customUser.getMember();
 		int userNo = member.getUserNo();
-
+		
 		model.addAttribute("list", service.list(userNo));
 	}
-	
+
+	// 코인 충전 성공 페이지
+	@GetMapping("/success")
+	public String success() throws Exception {
+		return "coin/success";
+	}
+
+	// 코인 충전 실패 페이지
+	@GetMapping("/failed")
+	public String failed() throws Exception {
+		return "coin/failed";
+	}
 
 }

@@ -9,9 +9,8 @@ import com.project.mapper.UserItemMapper;
 @Service
 public class UserItemServiceImpl implements UserItemService {
 	@Autowired 
-	private UserItemMapper mapper; 
-	 
+	private UserItemMapper mapper;
+	
 	@Autowired 
 	private CoinMapper coinMapper; 
-
 }

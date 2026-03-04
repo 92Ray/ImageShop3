@@ -46,20 +46,22 @@
 						<tr>
 							<td align="center">${chargeCoin.historyNo}</td>
 							<td align="left">${chargeCoin.amount}</td>
-							<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${chargeCoin.regDate}" /></td>
+							<td align="center"><fmt:formatDate
+									pattern="yyyy-MM-dd HH:mm" value="${chargeCoin.regDate}" /></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</table>
 
-		<!--페이징 네비게이션 추가 -->
+
 
 	</div>
 	<!-- 메인화면 작업끝 -->
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+	<!-- 이벤트 처리방식 -->
 	<script>
 		var result = "${msg}";
 		if (result === "SUCCESS") {

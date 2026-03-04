@@ -22,7 +22,6 @@
         <h2>
             <spring:message code="common.joinMemberFailed"    arguments="${userName}" />
         </h2>
-        <a href="/auth/login"><spring:message code="action.login" /></a>
 
     </div>
 

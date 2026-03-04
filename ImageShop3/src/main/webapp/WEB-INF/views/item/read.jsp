@@ -17,6 +17,7 @@
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
+	
 
 	<!-- 메인 -->
 	<div class="notice_register">
@@ -24,7 +25,7 @@
 			<spring:message code="item.header.read" />
 		</h2>
 
-		<form:form modelAttribute="item">
+		<form:form modelAttribute="item" action="/item/buy" method="post">
 			<form:hidden path="itemId" />
 
 			<table>
@@ -59,6 +60,9 @@
 		</form:form>
 		<div class="board-btn-area">
 
+			<button type="button" id="btnBuy">
+				<spring:message code="action.buy" />
+			</button>
 			<button type="button" id="btnList">
 				<spring:message code="action.list" />
 			</button>
@@ -74,6 +78,10 @@
 		$(document).ready(function() {
 			const formObj = $("#item");
 
+			$("#btnBuy").on("click", function() {
+			 	formObj.submit();
+			});
+			
 			$("#btnList").on("click", function() {
 				self.location = "/item/list";
 			});

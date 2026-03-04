@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.project.common.domain.CodeLabelValue;
 import com.project.domain.CodeGroup;
+import com.project.domain.PayCoin;
 
 public interface CodeService {
 	 

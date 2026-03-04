@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.mapper.BoardCommentMapper">
+
+    <!-- 댓글 등록 -->
+    <insert id="insert">
+        INSERT INTO BOARD_COMMENT (COMMENT_NO, BOARD_NO, USER_NO, CONTENT)
+        VALUES (BOARD_COMMENT_SEQ.NEXTVAL, #{boardNo}, #{userNo}, #{content})
+    </insert>
+
+    <!-- 특정 게시글 댓글 조회 (작성자 이름 포함) -->
+    <select id="listByBoardNo" resultType="com.project.domain.BoardComment">
+    SELECT C.COMMENT_NO,
+           C.BOARD_NO,
+           C.USER_NO,
+           C.CONTENT,
+           C.REG_DATE,
+           C.UPD_DATE,
+           M.USER_NAME
+    FROM BOARD_COMMENT C
+    JOIN MEMBER M ON C.USER_NO = M.USER_NO
+    WHERE C.BOARD_NO = #{boardNo}
+    ORDER BY C.COMMENT_NO ASC
+</select>
+
+    <!-- 댓글 삭제 -->
+    <delete id="delete">
+        DELETE FROM BOARD_COMMENT WHERE COMMENT_NO = #{commentNo}
+    </delete>
+
+</mapper>
+

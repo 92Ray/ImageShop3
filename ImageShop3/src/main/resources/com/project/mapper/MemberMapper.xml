@@ -98,10 +98,16 @@
 		SELECT count(*)
 		FROM member
 	</select>
+	
 	<!-- 멤버정보 -->
 	<select id="readByNo">
 		SELECT * FROM MEMBER WHERE user_id = #{username}
 	</select>
+	
+	<!-- 회원 코인 조회 -->
+	<select id="getCoin" resultType="int">
+		SELECT coin FROM member WHERE user_no = #{userNo}
+	</select>>
 </mapper> 
 
 

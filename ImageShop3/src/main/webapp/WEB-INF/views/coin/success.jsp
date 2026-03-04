@@ -17,12 +17,13 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
+	
 	<div align="center" class="register_page">
 		<div>
 			<h2>${msg}</h2>
 			<a href="/coin/list"><spring:message code="action.list" /></a>
 		</div>
-
+	
 	</div>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />

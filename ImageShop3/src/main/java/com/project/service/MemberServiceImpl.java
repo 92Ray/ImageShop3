@@ -96,5 +96,12 @@ public class MemberServiceImpl implements MemberService {
 	public Member readByNo(String username) throws Exception {
 		return mapper.readByNo(username);
 	}
+	
+	// 회원의 코인을 반환한다.
+	@Override 
+	public int getCoin(Member member) throws Exception {
+		
+	 	return mapper.getCoin(member); 
+	} 
 
 }
