@@ -1,4 +1,4 @@
-package com.project.commom.security;
+package com.project.common.security;
 
 import java.io.IOException;
 

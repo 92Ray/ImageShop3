@@ -1,11 +1,11 @@
-package com.project.commom.security;
+package com.project.common.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.project.commom.security.domain.CustomUser;
+import com.project.common.security.domain.CustomUser;
 import com.project.domain.Member;
 import com.project.mapper.MemberMapper;
 

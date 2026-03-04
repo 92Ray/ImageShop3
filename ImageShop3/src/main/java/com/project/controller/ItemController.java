@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.project.commom.security.domain.CustomUser;
+import com.project.common.security.domain.CustomUser;
 import com.project.domain.Item;
 import com.project.domain.Member;
 import com.project.service.ItemService;
@@ -105,23 +105,23 @@ public class ItemController {
 		return "item/modify";
 	}
 
-	// 상품 구매 요청을 처리한다.
-	@PostMapping("/buy")
-	@PreAuthorize("hasAnyRole('ROLE_MEMBER','ROLE_ADMIN')")
-	public String buy(int itemId, RedirectAttributes rttr, Authentication authentication) throws Exception {
-		// 인증된 사용자정보를 가져오고,
-		CustomUser customUser = (CustomUser) authentication.getPrincipal();
-		Member member = customUser.getMember();
-		int userNo = member.getUserNo();
+//	// 상품 구매 요청을 처리한다.
+//	@PostMapping("/buy")
+//	@PreAuthorize("hasAnyRole('ROLE_MEMBER','ROLE_ADMIN')")
+//	public String buy(int itemId, RedirectAttributes rttr, Authentication authentication) throws Exception {
+//		// 인증된 사용자정보를 가져오고,
+//		CustomUser customUser = (CustomUser) authentication.getPrincipal();
+//		Member member = customUser.getMember();
+//		int userNo = member.getUserNo();
 //		member.setCoin(memberService.getCoin(userNo));
 //
 //		Item item = itemService.read(itemId);
 //		userItemService.register(member, item);
-		String message = messageSource.getMessage("item.purchaseComplete", null, Locale.KOREAN);
-		rttr.addFlashAttribute("msg", message);
-
-		return "redirect:/item/success";
-	}
+//		String message = messageSource.getMessage("item.purchaseComplete", null, Locale.KOREAN);
+//		rttr.addFlashAttribute("msg", message);
+//
+//		return "redirect:/item/success";
+//	}
 
 	// 썸네일 미리보기 이미지 표시
 	@ResponseBody
@@ -304,18 +304,17 @@ public class ItemController {
 	// 상품 구매 요청을 처리한다.
 	@PostMapping("/buy")
 	@PreAuthorize("hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')")
-	public String buy(Item itemId, RedirectAttributes rttr, Authentication authentication) throws Exception {
+	public String buy(Item item, RedirectAttributes rttr, Authentication authentication) throws Exception {
 		// 인증된 사용자정보를 가져오고
 		CustomUser customUser = (CustomUser) authentication.getPrincipal();
 		Member member = customUser.getMember();
 		int userNo = member.getUserNo();
-		
 
 		// 해당되는 회원의 코인정보를 가져와 저장.
 		member.setCoin(memberService.getCoin(member));
 
 		// 상품에 대한 정보를 가져온다.
-		Item item = itemService.read(item);
+		Item _item = itemService.read(item);
 
 		// 장바구니 생성
 		int count = userItemService.register(member, item);

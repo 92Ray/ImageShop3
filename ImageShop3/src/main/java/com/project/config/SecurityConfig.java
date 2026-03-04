@@ -18,9 +18,9 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
-import com.project.commom.security.CustomAccessDeniedHandler;
-import com.project.commom.security.CustomLoginSuccessHandler;
-import com.project.commom.security.CustomUserDetailsService;
+import com.project.common.security.CustomAccessDeniedHandler;
+import com.project.common.security.CustomLoginSuccessHandler;
+import com.project.common.security.CustomUserDetailsService;
 
 import jakarta.servlet.DispatcherType;
 import lombok.extern.slf4j.Slf4j;

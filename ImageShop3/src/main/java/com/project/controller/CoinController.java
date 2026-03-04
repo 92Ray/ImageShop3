@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.project.commom.security.domain.CustomUser;
+import com.project.common.security.domain.CustomUser;
 import com.project.domain.ChargeCoin;
 import com.project.domain.Member;
 import com.project.service.CoinService;
@@ -72,6 +72,17 @@ public class CoinController {
 		model.addAttribute("list", service.list(userNo));
 	}
 
+	// 사용자 구매 내역 보기 요청을 처리한다.
+	@GetMapping("/listPay") 
+	@PreAuthorize("hasRole('ROLE_MEMBER')") 
+	public void listPayHistory(Model model, Authentication authentication) throws Exception { 
+		CustomUser customUser = (CustomUser) 
+				authentication.getPrincipal(); 
+		Member member = customUser.getMember(); 
+		
+		model.addAttribute("list", service.listPayHistory(member)); 
+	}
+
 	// 코인 충전 성공 페이지
 	@GetMapping("/success")
 	public String success() throws Exception {
@@ -83,5 +94,6 @@ public class CoinController {
 	public String failed() throws Exception {
 		return "coin/failed";
 	}
+	
 
 }
