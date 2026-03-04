@@ -1,0 +1,24 @@
+/* ===============================
+   헤더 전체 클릭
+   =============================== */
+.app-homebar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 120px;
+	background-color: #1E293B;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 2rem;
+	font-weight: 700;
+	transition: background 0.6s ease; /* 천천히 색 바뀌도록 */
+	cursor: pointer;
+}
+
+.app-homebar:hover {
+	background-color: #3D4E99; /* 기존보다 훨씬 밝게 */
+}
+
+.app-homebar__title {
+	pointer-events: none;
+}

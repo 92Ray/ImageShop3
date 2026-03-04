@@ -1,0 +1,101 @@
+/* ===============================
+   메뉴 영역 (중앙 메뉴 + 오른쪽 로그인)
+   =============================== */
+.app-menu-flex {
+	position: relative;
+	background-color: #f9f9f9;
+	padding: 8px 30px;
+	height: 50px;
+}
+
+/* 중앙 메뉴 */
+.menu-center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	gap: 10px;
+}
+
+/* 오른쪽 로그인/회원 버튼 */
+.menu-right {
+	position: absolute;
+	right: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	gap: 10px;
+}
+
+.menu-center a,
+.menu-right a {
+	text-decoration: none;
+	color: #1E293B;
+	font-weight: 500;
+	padding: 6px 10px;
+	border-radius: 4px;
+	transition: background 0.3s;
+}
+
+.menu-center a:hover,
+.menu-right a:hover {
+	background-color: #E0F7FA;
+}
+
+.menu-right {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    gap: 10px;
+}
+
+.menu-right .user-info {
+    margin-right: 8px;
+    font-weight: 600;
+    font-size: 1.1rem; /* 버튼보다 약간 크게 */
+    line-height: 1.5;  /* 버튼과 높이 맞추기 */
+}
+
+.menu-right a {
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #1E293B;
+    transition: background 0.3s;
+}
+
+.menu-right a:hover {
+    background-color: #E0F7FA;
+}
+
+
+/* ===============================
+   반응형
+   =============================== */
+@media (max-width: 768px) {
+	.menu-center {
+		position: static;
+		transform: none;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-bottom: 6px;
+	}
+
+	.menu-right {
+		position: static;
+		transform: none;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	
+	.menu-center a,
+	.menu-right a {
+		margin: 4px 6px;
+		font-size: 0.9rem;
+	}
+	
+	
+	
+}

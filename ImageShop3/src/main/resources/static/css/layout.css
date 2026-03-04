@@ -1,0 +1,57 @@
+/* ===============================
+   HTML & BODY 기본 세팅
+   =============================== */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 화면 전체 높이 */
+    font-family: 'Noto Sans', sans-serif; /* 깔끔한 기본 폰트 */
+    background-color: #f9f9f9;
+}
+
+/* ===============================
+   콘텐츠 영역 (MAIN)
+   =============================== */
+.app-content {
+    max-width: 1200px;      /* 중앙 영역 최대 폭 */
+    margin: 0 auto;         /* 화면 중앙 정렬 */
+    padding: 20px 30px;     /* 상하좌우 여백 */
+    flex: 1;                /* 남은 공간 채우기 */
+    min-height: 500px;      /* 최소 높이, 푸터 밀림 방지 */
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border-radius: 6px;     /* 부드러운 모서리 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 약간 그림자 */
+}
+
+/* ===============================
+   푸터 영역
+   =============================== */
+.footer {
+    text-align: center;     /* 중앙 정렬 */
+    color: #888888;
+    font-size: 0.9rem;
+    padding: 12px 0;
+    background-color: #f4f4f4;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* ===============================
+   반응형
+   =============================== */
+@media (max-width: 768px) {
+    .app-content {
+        padding: 15px 10px;
+        min-height: 300px;
+    }
+    .footer {
+        font-size: 0.8rem;
+        padding: 10px 0;
+    }
+}
