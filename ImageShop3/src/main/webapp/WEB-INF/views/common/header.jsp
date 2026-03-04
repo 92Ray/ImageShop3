@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link rel="stylesheet" href="/css/common.css">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
 <div class="app-homebar">
@@ -27,7 +25,7 @@
 페이지로 이동할 수 있게 한다. -->
 			<sec:authorize access="isAuthenticated()">
 				<td width="180"><sec:authentication
-						property="principal.username" /> 님 <a href="/auth/logout"> <spring:message
+						property="principal.username" /> 님<a href="/auth/logout"> <spring:message
 							code="header.logout" /></a></td>
 			</sec:authorize>
 		</tr>

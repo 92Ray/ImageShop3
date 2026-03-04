@@ -267,9 +267,14 @@ public class ItemController {
 
 	// 상품 상세 페이지
 	@GetMapping("/read")
-	public String read(Item item, Model model) throws Exception {
-		Item _item = itemService.read(item);
-		model.addAttribute("item", _item);
+	public String read(Item _item, Model model) throws Exception {
+		Item item = itemService.read(_item);
+		
+		if(item != null) {
+			model.addAttribute("item", item);			
+		}else {
+			throw new Exception("에러가 발생하였습니다.");
+		}
 		return "item/read";
 	}
 
@@ -317,7 +322,7 @@ public class ItemController {
 		Item _item = itemService.read(item);
 
 		// 장바구니 생성
-		int count = userItemService.register(member, item);
+		int count = userItemService.register(member, _item);
 
 		// 메시지로 요청하거나
 		// String message = messageSource.getMessage("item.purchaseComplete", null,

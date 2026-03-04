@@ -17,11 +17,17 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
+
 	<div align="center" class="register_page">
-		<h2>
-			${msg}
-		</h2>
-		<a href="/item/list"><spring:message code="action.list" /></a>
+		<div>
+			<h2>
+				<spring:message code="common.error.urlNotFound" />
+			</h2>
+
+			<a href="javascript:window.history.back();"><spring:message
+					code="common.error.backPage" /></a><br> <a href="/"><spring:message
+					code="common.error.returnHome" /></a>
+		</div>
 
 	</div>
 

@@ -17,14 +17,15 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
-	<div align="center" class="register_page">
+	<div align="center" class="user_setup">
 		<h2>
-			${msg}
+			<spring:message code="item.header.downloadError" />
 		</h2>
-		<a href="/item/list"><spring:message code="action.list" /></a>
-
+		<p>
+			<spring:message code="item.notMyItem" />
+		</p>
+		<a href="/userItem/list"><spring:message code="action.list" /></a>
 	</div>
-
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

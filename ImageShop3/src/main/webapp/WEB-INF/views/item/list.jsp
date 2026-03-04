@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -17,12 +18,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+	<body>
+
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 	
-	<sec:authentication property="principal.username"/>
-	<sec:authentication property="principal.authorities"/>
-
+	<!--  
+	<sec:authentication property="principal.username" />
+	<sec:authentication property="principal.authorities" />
+	-->
+	
 	<!-- 메인화면 작업시작 -->
 	<div class="notice_list">
 		<h2>
@@ -120,4 +125,6 @@
 		}
 	</script>
 </body>
+
+
 </html>

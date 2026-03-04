@@ -17,11 +17,17 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
+
 	<div align="center" class="register_page">
 		<h2>
-			${msg}
+			<spring:message code="coin.header.chargeCoin" />
 		</h2>
-		<a href="/item/list"><spring:message code="action.list" /></a>
+
+		<p>
+			<spring:message code="coin.notEnoughCoin" />
+		</p>
+
+		<a href="/coin/charge"><spring:message code="coin.charge" /></a>
 
 	</div>
 

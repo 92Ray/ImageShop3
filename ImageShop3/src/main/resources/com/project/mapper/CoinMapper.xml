@@ -41,8 +41,8 @@
 
     <!-- 차감내역 등록 -->
     <insert id="createPayHistory">
-        INSERT INTO pay_coin_history(history_no, user_no, item_name, item_id, amount, item_name) 
-        VALUES(pay_coin_history_seq.NEXTVAL, #{userNo}, #{itemId}, #{itemName} #{amount}, #{itemName})
+        INSERT INTO pay_coin_history(history_no, user_no, item_name, item_id, amount) 
+        VALUES(pay_coin_history_seq.NEXTVAL, #{userNo}, #{itemName} , #{itemId}, #{amount})
     </insert>
 
     <!-- 구매 내역 조회 -->
