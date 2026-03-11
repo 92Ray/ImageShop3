@@ -1,186 +1,291 @@
-/* ===============================
-   코드그룹 공통 스타일
-   =============================== */
-.codegroup_list,
-.codegroup_register,
-.codegroup_modify,
-.codegroup_read {
+/* =========================================
+   codegroup.css - 코드그룹 관리 페이지 스타일
+   모든 선택자는 해당 페이지 블록 내부로 한정
+   ========================================= */
+
+/* ----- 공통 요소 (각 페이지 블록 내부에서만 동작) ----- */
+.codegroup_list, .codegroup_modify, .codegroup_read, .codegroup_register {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: #333;
     max-width: 1200px;
-    margin: 0 auto 40px auto; /* 아래 여백으로 푸터와 거리 확보 */
-    padding: 20px 30px;
-    background-color: #ffffff;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    box-sizing: border-box;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-/* ===============================
-   제목 스타일
-   =============================== */
+/* 페이지 제목 */
 .codegroup_list h2,
-.codegroup_register h2,
 .codegroup_modify h2,
-.codegroup_read h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #1E293B;
-}
-
-/* ===============================
-   테이블 공통
-   =============================== */
-.codegroup_list table,
-.codegroup_read table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.codegroup_list th,
-.codegroup_list td,
-.codegroup_read th,
-.codegroup_read td {
-    border: 1px solid #e0e0e0;
-    padding: 8px 12px;
-    text-align: left;
-    font-size: 0.95rem;
-}
-
-.codegroup_list th,
-.codegroup_read th {
-    background-color: #f1f5f9;
+.codegroup_read h2,
+.codegroup_register h2 {
+    font-size: 2rem;
     font-weight: 600;
-    color: #1E293B;
+    color: #4a0072;               /* 진한 보라 */
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    border-bottom: 3px solid #e0b3ff; /* 연보라 밑줄 */
+    padding-bottom: 0.75rem;
 }
 
-.codegroup_list tr:nth-child(even),
-.codegroup_read tr:nth-child(even) {
-    background-color: #f9fafb;
-}
-
-.codegroup_list a {
-    color: #0288d1;
+/* ----- 목록 페이지 (codegroup_list) ----- */
+.codegroup_list > a:first-of-type {
+    display: inline-block;
+    background-color: #6a0dad;    /* 보라색 */
+    color: white;
     text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1.8rem;
+    border-radius: 40px;
+    margin-bottom: 2rem;
+    transition: background-color 0.2s;
+    border: 1px solid transparent;
 }
 
-.codegroup_list a:hover {
-    text-decoration: underline;
+.codegroup_list > a:first-of-type:hover {
+    background-color: #7b1fa2;
+    border-color: #4a0072;
 }
 
-/* ===============================
-   폼 스타일 (register / modify / read)
-   =============================== */
-.codegroup_register table,
-.codegroup_modify table,
-.codegroup_read table {
+.codegroup_list table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
-.codegroup_register td,
-.codegroup_modify td,
-.codegroup_read td {
-    padding: 8px 10px;
+.codegroup_list th {
+    background-color: #f3e5f5;     /* 매우 연한 보라 */
+    color: #4a0072;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    border-bottom: 2px solid #d1c4e9;
+}
+
+.codegroup_list td {
+    padding: 0.9rem 0.5rem;
+    border-bottom: 1px solid #e9e9e9;
     vertical-align: middle;
 }
 
-.codegroup_register input,
-.codegroup_modify input,
-.codegroup_read input {
-    width: 100%;
-    padding: 6px 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
+.codegroup_list tr:last-child td {
+    border-bottom: none;
+}
+
+.codegroup_list td:first-child {
+    text-align: center;
+    font-weight: 500;
+    color: #555;
+}
+
+.codegroup_list td:nth-child(2) {
+    text-align: left;
+}
+
+.codegroup_list td:nth-child(3) {
+    text-align: center;
+    color: #666;
     font-size: 0.95rem;
-    box-sizing: border-box;
 }
 
-.codegroup_register input[readonly],
-.codegroup_modify input[readonly],
+.codegroup_list td a {
+    color: #6a0dad;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.codegroup_list td a:hover {
+    color: #9c4dcc;
+    text-decoration: underline;
+}
+
+/* 빈 목록 메시지 */
+.codegroup_list td[colspan="3"] {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* ----- 등록/수정/상세 공통 폼 영역 ----- */
+.codegroup_modify form,
+.codegroup_read form,
+.codegroup_register form {
+    margin: 1.5rem 0 2rem;
+}
+
+.codegroup_modify table,
+.codegroup_read table,
+.codegroup_register table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fafafa;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.codegroup_modify tr,
+.codegroup_read tr,
+.codegroup_register tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.codegroup_modify tr:last-child,
+.codegroup_read tr:last-child,
+.codegroup_register tr:last-child {
+    border-bottom: none;
+}
+
+.codegroup_modify td:first-child,
+.codegroup_read td:first-child,
+.codegroup_register td:first-child {
+    background-color: #f3e5f5;
+    font-weight: 600;
+    color: #4a0072;
+    width: 180px;
+    padding: 1rem 1.5rem;
+    border-right: 1px solid #d1c4e9;
+}
+
+.codegroup_modify td:nth-child(2),
+.codegroup_read td:nth-child(2),
+.codegroup_register td:nth-child(2) {
+    padding: 0.8rem 1.5rem;
+    background: white;
+}
+
+.codegroup_modify td:nth-child(3),
+.codegroup_read td:nth-child(3),
+.codegroup_register td:nth-child(3) {
+    background: white;
+    padding: 0.8rem 1rem;
+    color: #d32f2f;
+    font-size: 0.9rem;
+    width: 200px;
+}
+
+/* 입력 필드 스타일 */
+.codegroup_modify input[type="text"],
+.codegroup_read input[type="text"],
+.codegroup_register input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.7rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.codegroup_modify input[type="text"]:focus,
+.codegroup_register input[type="text"]:focus {
+    border-color: #6a0dad;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(106,13,173,0.1);
+}
+
+/* 읽기 전용 필드 (상세보기) */
 .codegroup_read input[readonly] {
-    background-color: #f1f5f9;
-    color: #475569;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    color: #555;
 }
 
-/* 오류 메시지 */
-.codegroup_register font,
-.codegroup_modify font,
-.codegroup_read font {
-    color: red;
-    font-size: 0.85rem;
+/* 에러 메시지 폰트 */
+.codegroup_modify font[color="red"],
+.codegroup_read font[color="red"],
+.codegroup_register font[color="red"] {
+    font-weight: 500;
 }
 
-/* ===============================
-   버튼 스타일 (헤더 색상 적용)
-   =============================== */
-.codegroup_list > a,
-.codegroup_register button,
+/* ----- 버튼 영역 (각 페이지 하단) ----- */
+.codegroup_list > div:last-child,
+.codegroup_modify > div:last-child,
+.codegroup_read > div:last-child,
+.codegroup_register > div:last-child {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin: 2rem 0 1.5rem;
+}
+
+/* 버튼 공통 스타일 */
+.codegroup_list button,
 .codegroup_modify button,
-.codegroup_read button {
-	background-color: #1E293B;
-	color: #ffffff;
-	border: none;
-	border-radius: 4px;
-	padding: 8px 16px;
-	font-size: 0.95rem;
-	font-weight: 500;
-	margin-right: 10px;
-	cursor: pointer;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-	transition: background 0.2s ease; /* 버튼은 빠르게 색 변화 */
-	text-decoration: none;
-	display: inline-block;
+.codegroup_read button,
+.codegroup_register button {
+    background-color: white;
+    color: #6a0dad;
+    border: 1px solid #6a0dad;
+    font-weight: 600;
+    padding: 0.7rem 2rem;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 100px;
 }
 
-/* 커서 올리면 더 밝게 */
-.codegroup_list > a:hover,
-.codegroup_register button:hover,
+.codegroup_list button:hover,
 .codegroup_modify button:hover,
-.codegroup_read button:hover {
-	text-decoration: none;
-	background-color: #3D4E99; /* 확실히 밝은 색 */
+.codegroup_read button:hover,
+.codegroup_register button:hover {
+    background-color: #6a0dad;
+    color: white;
+    border-color: #6a0dad;
 }
 
-/* ===============================
-   링크 / 추가 버튼
-   =============================== */
-.codegroup_list > a {
-    display: inline-block;
-    margin-bottom: 12px;
+/* 특별히 강조할 버튼 (등록, 수정, 삭제) */
+#btnRegister, #btnModify, #btnRemove {
+    background-color: #6a0dad;
+    color: white;
+    border-color: #6a0dad;
 }
 
-/* ===============================
-   반응형
-   =============================== */
+#btnRegister:hover, #btnModify:hover, #btnRemove:hover {
+    background-color: #7b1fa2;
+    border-color: #7b1fa2;
+}
+
+/* 반응형 */
 @media (max-width: 768px) {
-    .codegroup_list,
-    .codegroup_register,
-    .codegroup_modify,
-    .codegroup_read {
-        padding: 15px 10px;
+    .codegroup_list, .codegroup_modify, .codegroup_read, .codegroup_register {
+        padding: 0 1rem;
+        margin: 1rem auto;
     }
 
-    .codegroup_list th,
-    .codegroup_list td,
-    .codegroup_read th,
-    .codegroup_read td {
-        font-size: 0.85rem;
-        padding: 6px 8px;
+    .codegroup_modify td:first-child,
+    .codegroup_read td:first-child,
+    .codegroup_register td:first-child {
+        width: 120px;
+        padding: 0.8rem;
     }
 
-    .codegroup_register input,
-    .codegroup_modify input,
-    .codegroup_read input {
-        font-size: 0.9rem;
+    .codegroup_modify td:nth-child(2) input,
+    .codegroup_register td:nth-child(2) input {
+        max-width: 100%;
     }
 
-    .codegroup_list > a,
-    .codegroup_register button,
+    .codegroup_list > div:last-child,
+    .codegroup_modify > div:last-child,
+    .codegroup_read > div:last-child,
+    .codegroup_register > div:last-child {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .codegroup_list button,
     .codegroup_modify button,
-    .codegroup_read button {
-        font-size: 0.9rem;
-        padding: 6px 12px;
+    .codegroup_read button,
+    .codegroup_register button {
+        min-width: 120px;
     }
 }

@@ -1,5 +1,5 @@
 /* ===============================
-   메뉴 영역 (중앙 메뉴 + 오른쪽 로그인)
+   메뉴 영역 (app-menu-flex 네임스페이스)
    =============================== */
 .app-menu-flex {
 	position: relative;
@@ -9,7 +9,7 @@
 }
 
 /* 중앙 메뉴 */
-.menu-center {
+.app-menu-flex .menu-center {
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -18,18 +18,20 @@
 	gap: 10px;
 }
 
-/* 오른쪽 로그인/회원 버튼 */
-.menu-right {
+/* 오른쪽 로그인/회원 버튼 영역 */
+.app-menu-flex .menu-right {
 	position: absolute;
 	right: 30px;
 	top: 50%;
 	transform: translateY(-50%);
 	display: flex;
+	align-items: center; /* 수직 중앙 정렬 */
 	gap: 10px;
 }
 
-.menu-center a,
-.menu-right a {
+/* 메뉴 링크 공통 스타일 (중앙/오른쪽 모두) */
+.app-menu-flex .menu-center a,
+.app-menu-flex .menu-right a {
 	text-decoration: none;
 	color: #1E293B;
 	font-weight: 500;
@@ -38,44 +40,25 @@
 	transition: background 0.3s;
 }
 
-.menu-center a:hover,
-.menu-right a:hover {
+.app-menu-flex .menu-center a:hover,
+.app-menu-flex .menu-right a:hover {
 	background-color: #E0F7FA;
 }
 
-.menu-right {
-    display: flex;
-    align-items: center; /* 수직 중앙 정렬 */
-    gap: 10px;
+/* 오른쪽 사용자명 */
+.app-menu-flex .menu-right .user-info {
+	margin-right: 8px;
+	font-weight: 600;
+	font-size: 1.1rem;
+	line-height: 1.5;
+	color: #1E293B;
 }
-
-.menu-right .user-info {
-    margin-right: 8px;
-    font-weight: 600;
-    font-size: 1.1rem; /* 버튼보다 약간 크게 */
-    line-height: 1.5;  /* 버튼과 높이 맞추기 */
-}
-
-.menu-right a {
-    font-weight: 500;
-    font-size: 1rem;
-    padding: 6px 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #1E293B;
-    transition: background 0.3s;
-}
-
-.menu-right a:hover {
-    background-color: #E0F7FA;
-}
-
 
 /* ===============================
    반응형
    =============================== */
 @media (max-width: 768px) {
-	.menu-center {
+	.app-menu-flex .menu-center {
 		position: static;
 		transform: none;
 		justify-content: center;
@@ -83,19 +66,16 @@
 		margin-bottom: 6px;
 	}
 
-	.menu-right {
+	.app-menu-flex .menu-right {
 		position: static;
 		transform: none;
 		justify-content: center;
 		flex-wrap: wrap;
 	}
 	
-	.menu-center a,
-	.menu-right a {
+	.app-menu-flex .menu-center a,
+	.app-menu-flex .menu-right a {
 		margin: 4px 6px;
 		font-size: 0.9rem;
 	}
-	
-	
-	
 }

@@ -1,0 +1,62 @@
+/* ===============================
+   로그인폼 전용
+   =============================== */
+.auth_login {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.auth_login table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.auth_login td {
+    padding: 8px 6px;
+}
+
+.auth_login input[type="text"],
+.auth_login input[type="password"] {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.auth_login input[type="checkbox"] {
+    transform: scale(1.1);
+    margin-right: 6px;
+}
+
+.auth_login button {
+    background-color: #1E293B;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    transition: background 0.2s ease;
+}
+
+.auth_login button:hover {
+    background-color: #3D4E99; /* 마우스 올렸을 때 색 변화 */
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+    .auth_login {
+        margin: 20px;
+        padding: 15px;
+    }
+    .auth_login button {
+        width: 100%;
+        margin: 6px 0;
+    }
+}

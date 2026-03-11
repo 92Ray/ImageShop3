@@ -10,11 +10,12 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="/css/auth.css">
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
+<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
-<jsp:include page="/WEB-INF/views/common/menu.jsp" />
+
 
 <div class="auth_register">
     <h2><spring:message code="user.header.register" /></h2>
